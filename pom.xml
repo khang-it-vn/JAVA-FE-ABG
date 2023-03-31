@@ -8,7 +8,7 @@
 		<version>3.0.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>java-project</groupId>
+	<groupId>JAVA-FE-ABG</groupId>
 	<artifactId>solo.team</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
