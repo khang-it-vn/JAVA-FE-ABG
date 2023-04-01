@@ -1,6 +1,8 @@
 # JAVA-FE-ABG
 FE-JAVA Hệ thống cổng thanh toán điện tử
 ## 1. Setup env
+> Intelij Umtimate 2023<br>
+Java 8
 ## 2. Config structure project
 ![img.png](img.png)
 ## 3. Config connect mysql using jpa
