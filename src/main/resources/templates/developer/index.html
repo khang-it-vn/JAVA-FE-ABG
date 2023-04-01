@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout_developer :: head">
+
+</head>
+<body>
+<div id="app">
+  <div class="theme-container">
+    <header th:replace="layout_developer :: header"></header>
+    <div class="sidebar-mask"></div>
+    <aside th:replace="layout_developer ::aside"></aside>
+
+    <div>
+      Nội dung bỏ trong đây
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const contentSearch = urlParams.get('contentSearch');
+    if (contentSearch) {
+      document.getElementById('search-box').value = contentSearch;
+    }
+
+  })
+</script>
+</body>
+</html>
