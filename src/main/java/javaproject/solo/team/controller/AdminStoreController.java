@@ -40,6 +40,17 @@ public class AdminStoreController {
         return "admin_store/add";
     }
 
+    @GetMapping("adminstore/delete")
+    public String delete (@RequestParam("id") int id) {
+    try {
+        productService.deleteById(id);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    return "redirect:index";
+    }
+
+
     @PostMapping("adminstore/add")
     public String addProduct(@RequestParam("name") String name,
                              @RequestParam("description") String description,
