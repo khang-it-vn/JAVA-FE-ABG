@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div class="col-lg-9">
-                <div class="row" >
+                <div class="row">
                     <div th:each="product : ${product}"
                          class="col-lg-3 offset-lg-0 offset-md-3 offset-sm-3 offset-xs-3">
                         <div class="card h-100">
@@ -22,9 +22,12 @@
                                 <h5 class="card-title" th:text="${product.name}"></h5>
                                 <h6 class="card-subtitle mb-2 text-muted" th:text="${product.price}"></h6>
                                 <p class="card-text" th:text="${product.description}"></p>
+                                <a th:href="${'http://localhost:8080/store/productDetail?idProduct=' + product.idProduct}" class="btn btn-primary" onclick="viewProductDetail([[${product.id}]])">Xem chi tiết</a>
                             </div>
+<!--                            làm sao để focus zô id nhỉ dũ làm 4 5 cách rồi chưa đc á, vũ demo lại thử phát chưa tiêu nữa OK-->
+<!--ok á rồi khang chỉ dũ cái giỏ hàng cho xong lun khang, ok hehe hehe-->
                             <div class="card-footer">
-                                <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                                <a style="background-color: red" href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -33,7 +36,11 @@
         </div>
     </div>
 </section>
-
+<script>
+    function viewProductDetail(idProduct) {
+        window.location.href = "/store/productDetail?idProduct=" + idProduct;
+    }
+</script>
 <footer th:replace="layout_store :: footer"></footer>
 <div th:replace="layout_store :: under_footer"></div>
 </body>
