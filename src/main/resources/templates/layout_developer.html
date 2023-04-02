@@ -15,14 +15,14 @@
             <div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
                 <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z">
                 </path>
-            </svg></div> <a href="<?php echo ROOT_URL . 'developer/index' ?>" class="home-link router-link-active"> <span class="site-name can-hide">SOLO WALLET
+            </svg></div> <a href="/developer/index" class="home-link router-link-active"> <span class="site-name can-hide">SOLO WALLET
             DOCS</span></a>
             <div class="links">
                 <nav class="nav-links can-hide">
-                    <div class="nav-item"><a href="<?php echo ROOT_URL . 'user/index' ?>" class="nav-link ">
+                    <div class="nav-item"><a href="/user/index" class="nav-link ">
                         Trang chủ
                     </a></div>
-                    <div class="nav-item"><a href="<?php echo ROOT_URL . 'store/index' ?>" class="nav-link">
+                    <div class="nav-item"><a href="/store/index" class="nav-link">
                         Cửa hàng
                     </a></div>
                     <!---->
@@ -50,13 +50,12 @@
                         <p class="sidebar-heading"><span>Development</span>
                         </p>
                         <ul class="sidebar-links sidebar-group-items">
-
-                            <li><a href= class="sidebar-link">fdsafsdf</a></li>
-                            <li><a href= class="sidebar-link">fdsafsdf</a></li>
+                            <li th:each="doc: ${docs}"><a th:text="${doc.title}" th:href=" ${'?idDoc'+doc.idDoc}" class="sidebar-link">1</a></li>
 
                         </ul>
                     </section>
                 </li>
+
             </ul>
         </aside>
         <?php require($view) ?>

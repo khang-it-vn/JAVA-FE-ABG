@@ -13,16 +13,17 @@ public class Doc {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
+    @Column(name = "description")
     private String content;
-
-    public Doc() {
-    }
 
     public Doc(int idDoc, String title, String content) {
         this.idDoc = idDoc;
         this.title = title;
         this.content = content;
+    }
+
+    public Doc() {
+
     }
 
 

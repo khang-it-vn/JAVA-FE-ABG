@@ -14,4 +14,6 @@ public interface DocService {
     Doc update(Doc Doc);
 
     void deleteById(Integer id);
+
+//    Doc searchDocs(String keyword);
 }
