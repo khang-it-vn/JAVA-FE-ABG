@@ -57,18 +57,19 @@
                     }
                   </style>
                 </th>
+
+                <th>Last Price</th>
                 <th>24h Volume</th>
-                <th>Market Cap</th>
                 <th>Action</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>1</td>
-                <td>Nguyễn Văn A</td>
-                <td>25</td>
-                <td>25</td>
-                <td>25</td>
+              <tr th:each="symbolinfor : ${symbolinfors}">
+                <td th:text="${symbolinfor.symbol}"></td>
+                <td th:text="${symbolinfor.prevClosePrice}"></td>
+                <td th:text="${symbolinfor.priceChangePercent}"></td>
+                <td th:text="${symbolinfor.lastPrice}"></td>
+                <td th:text="${symbolinfor.volume}"></td>
                 <td><a href="#" onclick="goToPage('a')">Detail</a>
                   <a href="#" onclick="goToPage('b')">Trade</a>
                   <style>
@@ -105,7 +106,12 @@
     </div>
   </div>
 </div>
+<script>
+  setInterval(function(){
+    location.reload();
+  }, 400000);
 
+</script>
 <footer th:replace="layout_user :: footer"></footer>
 </body>
 </html>
