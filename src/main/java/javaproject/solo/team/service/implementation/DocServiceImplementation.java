@@ -39,4 +39,12 @@ public class DocServiceImplementation implements DocService {
     public void deleteById(Integer id) {
         this.repository.deleteById(id);
     }
+
+//    @Override
+//    public Doc searchDocs(String keyword) {
+//        List<Doc> docs = repository.searchDocs(keyword);
+//        if(!docs.isEmpty()){
+//            return docs.get(0);
+//        }else{ return null;}
+//    }
 }

@@ -6,6 +6,7 @@ import javaproject.solo.team.service.DocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class AdminDocController {
         model.addAttribute("docs", this.docService.getAll());
 
         return "admin_doc/index";
+
     }
     @GetMapping("admindoc/add")
     public String add(Model model)

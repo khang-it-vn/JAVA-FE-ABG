@@ -1,6 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" class="mdl-js">
 
-<head th:fragment="head" >
+
+<head th:fragment="head">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -712,6 +714,7 @@
         }
 
         .css-76jj4r {
+
             display: -webkit-inline-box;
             display: -webkit-inline-flex;
             display: -ms-inline-flexbox;
@@ -724,6 +727,11 @@
             -ms-flex-pack: center;
             -webkit-justify-content: center;
             justify-content: center;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+
             position: relative;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -732,11 +740,16 @@
             border: 0;
             margin: 0;
             border-radius: 0;
+
             padding: 0;
             cursor: pointer;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+
+            padding: 0.5625rem 0.875rem;
+            cursor: pointer;
+
             user-select: none;
             vertical-align: middle;
             -moz-appearance: none;
@@ -781,6 +794,19 @@
             padding-left: 1.375rem;
             cursor: pointer;
         }
+
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+            text-align: left;
+            transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity .25s ease-in-out;
+            width: 100%;
+            padding-left: 1.375rem;
+        }
+
+
 
         .css-76jj4r::-moz-focus-inner {
             border-style: none;
@@ -10002,6 +10028,7 @@
 
 </head>
 
+
 <body style="">
 <div id="__next">
     <div class="layout-wrapper css-uinsfl">
@@ -10077,6 +10104,7 @@
             </div>
         </div>
         <div class="layout-content-wrapper MuiBox-root css-34b9xr">
+
             <header th:fragment="header" class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic layout-navbar css-1omfavb">
                 <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular navbar-content-container css-6h6gtn">
                     <div class="MuiBox-root css-12d2mry">
@@ -10106,6 +10134,7 @@
                     </div>
                 </div>
             </header>
+
             <?php require($view) ?>
             <footer th:fragment="footer" class="layout-footer MuiBox-root css-1s71n78">
 
@@ -10117,6 +10146,7 @@
     </div>
 
 </div>
+
 
 
 

@@ -5,26 +5,47 @@
 </head>
 <body>
 <div id="app">
-  <div class="theme-container">
-    <header th:replace="layout_developer :: header"></header>
-    <div class="sidebar-mask"></div>
-    <aside th:replace="layout_developer ::aside"></aside>
+    <div class="theme-container">
+        <header th:replace="layout_developer :: header"></header>
+        <div class="sidebar-mask"></div>
+        <aside th:replace="layout_developer ::aside"></aside>
 
-    <div>
-      Nội dung bỏ trong đây
+        <div>
+            <div style="margin: 100px 30px 0px 300px" th:text="${doc.description}"></div>
+            <div style="margin: 100px 30px 0px 500px" th:text="${doc.content}"></div>
+            <div style="margin: 100px 30px 0px 300px" id="search-results"></div>
+        </div>
+
     </div>
-  </div>
 </div>
 
 <script>
-  $(document).ready(function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const contentSearch = urlParams.get('contentSearch');
-    if (contentSearch) {
-      document.getElementById('search-box').value = contentSearch;
-    }
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const contentSearch = urlParams.get('contentSearch');
+        if (contentSearch) {
+            document.getElementById('search-box').value = contentSearch;
+            search(contentSearch);
+        }
+    })
+    // function search(keyword) {
+    //     const docs = document.querySelectorAll('.sidebar-links .sidebar-link');
+    //     const searchResults = document.getElementById('search-results');
+    //     let count = 0;
+    //     let results = '';
+    //     docs.forEach(doc => {
+    //         if (doc.textContent.toLowerCase().includes(keyword.toLowerCase())) {
+    //             results += '<li><a href="' + doc.getAttribute('href') + '">' + doc.textContent + '</a></li>';
+    //             count++;
+    //         }
+    //     });
+    //     if (count === 0) {
+    //         searchResults.innerHTML = '<p>No results found</p>';
+    //     } else {
+    //         searchResults.innerHTML = '<ul>' + results + '</ul>';
+    //     }
+    // }
 
-  })
 </script>
 </body>
 </html>
