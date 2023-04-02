@@ -29,20 +29,19 @@
                 </nav>
             </div>
         </header>
-
         <div class="sidebar-mask"></div>
         <aside th:fragment="aside" class="sidebar">
             <ul class="sidebar-links">
                 <form method="get">
                     <div class="input-group">
-
+                    <form method="get">
                         <div class="form-outline">
-                            <input id="search-box" type="text" class="form-control" style="border-radius:30px" name="title" />
+                            <input id="search-box" type="text" class="form-control" style="border-radius:30px" name="keyword" />
                         </div>
                         <button type="submit" class="ml-1 btn btn-primary" style="border-radius:30px">
                             <i class="fas fa-search"></i>
                         </button>
-
+                    </form>
                     </div>
                 </form>
                 <li>
@@ -51,7 +50,6 @@
                         </p>
                         <ul class="sidebar-links sidebar-group-items">
                             <li th:each="doc: ${docs}"><a th:text="${doc.title}" th:href=" ${'?idDoc='+doc.idDoc}" class="sidebar-link">1</a></li>
-
                         </ul>
                     </section>
                 </li>
@@ -63,14 +61,6 @@
 
 </div>
 <script>
-    $(document).ready(function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const contentSearch = urlParams.get('contentSearch');
-        if (contentSearch) {
-            document.getElementById('search-box').value = contentSearch;
-        }
-
-    })
 </script>
 </body>
 
