@@ -3,9 +3,11 @@ package javaproject.solo.team.service.implementation;
 import javaproject.solo.team.entity.Category;
 import javaproject.solo.team.repository.CategoryRepository;
 import javaproject.solo.team.service.CategoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryServiceImplementation implements CategoryService {
     private CategoryRepository repository;
     public  CategoryServiceImplementation(CategoryRepository categoryRepository)
