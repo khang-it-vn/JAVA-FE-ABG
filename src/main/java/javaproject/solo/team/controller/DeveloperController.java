@@ -26,8 +26,6 @@ public class DeveloperController {
     @GetMapping("developer/index")
     public String index(Model model, @RequestParam(value = "idDoc", defaultValue = "1") Integer idDoc, @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         List<Doc> docs = docService.getAll();
-        System.out.println(docs.size());
-        System.out.println(keyword.length());
         ArrayList<Doc> docArrayList = new ArrayList<>();
         if (keyword.length()>0) {
 
