@@ -16,9 +16,11 @@ public class Doc {
     private String title;
 
     @Column(name = "description")
+
     private String description;
 
     @Column(name = "content")
+
     private String content;
 
     public Doc(int idDoc, String title, String description, String content) {
