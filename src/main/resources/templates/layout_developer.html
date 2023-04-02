@@ -29,7 +29,6 @@
                 </nav>
             </div>
         </header>
-
         <div class="sidebar-mask"></div>
         <aside th:fragment="aside" class="sidebar">
             <ul class="sidebar-links">
@@ -50,7 +49,7 @@
                         <p class="sidebar-heading"><span>Development</span>
                         </p>
                         <ul class="sidebar-links sidebar-group-items">
-                            <li th:each="doc: ${docs}"><a th:text="${doc.title}" th:href=" ${'?idDoc'+doc.idDoc}" class="sidebar-link">1</a></li>
+                            <li th:each="doc: ${docs}"><a th:text="${doc.title}" th:href=" ${'?idDoc='+doc.idDoc}" class="sidebar-link">1</a></li>
                         </ul>
                     </section>
                 </li>
