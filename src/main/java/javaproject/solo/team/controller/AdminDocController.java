@@ -9,5 +9,6 @@ public class AdminDocController {
     public String index() {
 
         return "adminDoc/index";
+
     }
 }

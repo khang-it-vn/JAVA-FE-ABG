@@ -5,9 +5,11 @@ import javaproject.solo.team.entity.Admin;
 import javaproject.solo.team.repository.AccountRepository;
 import javaproject.solo.team.repository.AdminRepository;
 import javaproject.solo.team.service.AdminService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AdminServiceImplementation implements AdminService {
     private AdminRepository repository;
     public  AdminServiceImplementation(AdminRepository adminRepository)

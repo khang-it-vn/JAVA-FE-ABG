@@ -1,13 +1,20 @@
 package javaproject.solo.team.service.implementation;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import javaproject.solo.team.entity.Category;
 import javaproject.solo.team.repository.CategoryRepository;
 import javaproject.solo.team.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryServiceImplementation implements CategoryService {
     private CategoryRepository repository;
+
+    @Autowired
     public  CategoryServiceImplementation(CategoryRepository categoryRepository)
     {
         super();
@@ -15,7 +22,7 @@ public class CategoryServiceImplementation implements CategoryService {
     }
     @Override
     public List<Category> getAll() {
-        return this.repository.findAll();
+        return repository.findAll();
     }
 
     @Override
@@ -37,4 +44,5 @@ public class CategoryServiceImplementation implements CategoryService {
     public void deleteById(Integer id) {
         this.repository.deleteById(id);
     }
+
 }
