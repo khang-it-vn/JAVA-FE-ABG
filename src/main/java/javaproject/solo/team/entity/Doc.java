@@ -13,7 +13,7 @@ public class Doc {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
+    @Column(name = "description")
     private String content;
 
     public Doc() {
