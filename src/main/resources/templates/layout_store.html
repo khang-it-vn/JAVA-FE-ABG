@@ -22,11 +22,11 @@
     <link rel="stylesheet" href="/assets/assets_Store/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/assets/assets_Store/css/style.css" type="text/css">
 
-    <meta property="og:type" content="Shop online - UTO Startup" />
-    <meta property="og:title" content="Shop online - UTO Startup" />
-    <meta property="og:description" content="Shop online chuyên cung cấp các mặt hàng tiêu dùng, sản phẩm giá rẻ..." />
-    <meta property="og:image" content="https://utostartup.com/wp-content/uploads/2022/10/logo.png" />
-    <meta property="og:url" content="utostartup.com" />
+    <meta property="og:type" content="Shop online - UTO Startup"/>
+    <meta property="og:title" content="Shop online - UTO Startup"/>
+    <meta property="og:description" content="Shop online chuyên cung cấp các mặt hàng tiêu dùng, sản phẩm giá rẻ..."/>
+    <meta property="og:image" content="https://utostartup.com/wp-content/uploads/2022/10/logo.png"/>
+    <meta property="og:url" content="utostartup.com"/>
 </head>
 
 <body>
@@ -124,7 +124,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><label >SOLO WALLET</label></a>
+                        <a href="./index.html"><label>SOLO WALLET</label></a>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -161,26 +161,25 @@
         <section class="bg-header">
             <div class="container">
                 <div class="row bg-header">
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <div class="hero__categories">
                             <div class="hero__categories__all">
                                 <i class="fa fa-bars"></i>
-                                <span>Danh Mục Sản Phẩm</span>
+                                <span>Danh mục</span>
                             </div>
                             <ul style="background-color: #f5f5f5">
-                                <?php foreach($viewModel['category'] as $element):?>
-                                <li class="active-hover">
-                                    <img src="http://localhost:3000/img/<?php echo $element['image']?>" alt="">
-                                    <a href="?id=<?php echo $element['id']?>"><?php echo $element['name']?></a>
+                                <li th:each="category: ${category}">
+                                    <a th:text="${category.name}"
+                                       th:href=" ${'?id='+category.id}"
+                                       class="sidebar-link"></a>
                                 </li>
-                                <?php endforeach;?>
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
+
     </header>
     <!-- Header Section End -->
 
@@ -190,7 +189,7 @@
 <?php require($view)?>
 
 <!-- Footer Section Begin -->
-<footer th:fragment="footer"  class="footer spad">
+<footer th:fragment="footer" class="footer spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-6 col-sm-6">
@@ -239,7 +238,8 @@
                             SOLO WALLET &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> An toàn, nhanh chóng, tiện lợi
+                            </script>
+                            An toàn, nhanh chóng, tiện lợi
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -253,7 +253,8 @@
 
 
 <!-- show cart modal -->
-<div th:fragment="under_footer" class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div th:fragment="under_footer" class="modal fade" id="cartModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -368,9 +369,6 @@
     <script src="/assets/assets_Store/js/owl.carousel.min.js"></script>
     <script src="/assets/assets_Store/js/main.js"></script>
 </div>
-
-
-
 
 
 </body>
