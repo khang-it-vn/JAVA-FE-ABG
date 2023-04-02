@@ -1,6 +1,7 @@
 package javaproject.solo.team.controller;
 
 import javaproject.solo.team.entity.Category;
+import javaproject.solo.team.entity.Doc;
 import javaproject.solo.team.entity.Product;
 import javaproject.solo.team.service.CategoryService;
 import javaproject.solo.team.service.ProductService;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 public class AdminStoreController {
@@ -26,10 +29,32 @@ public class AdminStoreController {
     }
 
     @GetMapping("adminstore/index")
-    public  String index(Model model)
+    public  String index(@RequestParam(defaultValue = "0") int page, Model model)
     {
-        model.addAttribute("products",productService.getAll());
-        return "admin_store/index";
+        // lay danh sach document ve
+        List<Product> products = this.productService.getAll();
+
+        int start = page * 15;
+        if(start > products.size())
+        {
+            start = start - 15;
+        }
+        if (start < products.size()) {
+            int end = Math.min(start + 15, products.size());
+            List<Product> results = products.subList(start, end);
+
+            model.addAttribute("products", results);
+            model.addAttribute("currentPage", page);
+            model.addAttribute("totalPages", (int) Math.ceil((double) products.size() / 15));
+
+            return "admin_store/index";
+        } else {
+            // trả về trang lỗi hoặc thông báo lỗi cho người dùng
+            return "redirect:index";
+        }
+//        model.addAttribute("products",productService.getAll());
+
+//        return "admin_store/index";
     }
 
     @GetMapping("adminstore/add")
