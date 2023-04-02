@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,9 +67,11 @@ public class UserController {
         return "user/login";
     }
     @PostMapping("user/updatempass")
-    public String updateMpass(@RequestParam("mpass") String mpass) {
+    public String updateMpass(@RequestParam("mpass") String mpass,HttpSession session) {
 
         System.out.printf(mpass);
+
+        setMPass(mpass, session);
         return "redirect:updatempass";
     }
     @GetMapping("user/updatempass")
@@ -117,38 +120,60 @@ public class UserController {
 //        Kiểm tra mpass
         if(responseAccount == null)
         {
-            return "user/login";
+            return "redirect:login";
         }
         session.setAttribute("Account",responseAccount);
         session.setAttribute("Role",author);
+
         if(responseAccount.getMpass().length() <= 0)
         {
-            return "user/updatempass";
+            return "redirecr:updatempass";
         }
 
-        return  "user/login";
+        return  "redirect:index";
     }
 
 
 
 
-    private void setMPass(String mpass) {
+    private void setMPass(String mpass, HttpSession session) {
         RestTemplate restTemplate = new RestTemplate();
 
-        // Tạo request headers
+        System.out.println("Token: \t" + ((ResponseRole)session.getAttribute("Role")).getToken());
+        // Định nghĩa header cho request
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(((ResponseRole)session.getAttribute("Role")).getToken());
 
-        // Tạo request body
-        String credentialJson = "{\"mpass\": \"" + mpass + "\"}";
-        HttpEntity<String> request = new HttpEntity<>(credentialJson, headers);
+        // Định nghĩa thông tin body của request
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("mpass", mpass);
 
-        // Gọi API với method POST và body là credential
-        ResponseEntity<Map> response = restTemplate.postForEntity("http://localhost:3000/login", request,  Map.class);
+        // Tạo entity từ header và body
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(requestBody, headers);
 
-        Map<String, Object> tokenObject = response.getBody(); // Lấy đối tượng đầu tiên trong mảng
-        System.out.println(tokenObject.get("mpass"));
+        // Gửi request đến API server
+        ResponseEntity<String> response = restTemplate.exchange(
+                "http://localhost:3000/update-m-pass",
+                HttpMethod.PUT,
+                entity,
+                String.class
+        );
+
+        // Xử lý kết quả trả về
+        if (response.getStatusCode() == HttpStatus.OK) {
+            // Request thành công, xử lý response ở đây
+            ((ResponseRole)session.getAttribute("Role")).setToken(mpass);
+            System.out.println("Thành công");
+        } else {
+            // Request thất bại, xử lý lỗi ở đây
+            System.out.println("Lỗi");
+        }
+
     }
+
+
+
 
     public ResponseAccount getInfo(ResponseRole account, String apiUrl) {
         HttpHeaders headers = new HttpHeaders();
