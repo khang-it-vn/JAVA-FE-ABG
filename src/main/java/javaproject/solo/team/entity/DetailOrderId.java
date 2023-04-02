@@ -1,41 +1,41 @@
 package javaproject.solo.team.entity;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
 @Embeddable
 public class DetailOrderId implements Serializable {
-    @Column(name = "id_order")
-    private int idOrder;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_order")
+    private Order order;
 
-    @Column(name = "id_product")
-    private int idProduct;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_product")
+    private Product product;
 
     public DetailOrderId() {
     }
 
-    public DetailOrderId(int idOrder, int idProduct) {
-        this.idOrder = idOrder;
-        this.idProduct = idProduct;
+    public Order getOrder() {
+        return order;
     }
 
-    // getters and setters
-
-    public int getIdOrder() {
-        return idOrder;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public void setIdOrder(int idOrder) {
-        this.idOrder = idOrder;
+    public Product getProduct() {
+        return product;
     }
 
-    public int getIdProduct() {
-        return idProduct;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
+    public DetailOrderId(Order order, Product product) {
+        this.order = order;
+        this.product = product;
     }
 }

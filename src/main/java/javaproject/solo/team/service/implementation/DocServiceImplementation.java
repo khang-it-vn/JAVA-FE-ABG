@@ -3,9 +3,11 @@ package javaproject.solo.team.service.implementation;
 import javaproject.solo.team.entity.Doc;
 import javaproject.solo.team.repository.DocRepository;
 import javaproject.solo.team.service.DocService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DocServiceImplementation implements DocService {
     private DocRepository repository;
     public  DocServiceImplementation(DocRepository coinRepository)

@@ -3,9 +3,11 @@ package javaproject.solo.team.service.implementation;
 import javaproject.solo.team.entity.Account;
 import javaproject.solo.team.repository.AccountRepository;
 import javaproject.solo.team.service.AccountService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AccountServiceImplementation implements AccountService {
 
     private AccountRepository repository;
@@ -38,4 +40,6 @@ public class AccountServiceImplementation implements AccountService {
     public void deleteById(Integer id) {
         this.repository.deleteById(id);
     }
+
+
 }
