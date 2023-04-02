@@ -26,10 +26,8 @@ public class DeveloperController {
     @GetMapping("developer/index")
     public String index(Model model, @RequestParam(value = "idDoc", defaultValue = "1") Integer idDoc, @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         List<Doc> docs = docService.getAll();
-//        System.out.println(docs.size());
-//        System.out.println(keyword);
         ArrayList<Doc> docArrayList = new ArrayList<>();
-        if (!keyword.isEmpty()) {
+        if (keyword.length()>0) {
 
             while ( docs.size() > 0) {
                 if (docs.get(0).getTitle().contains(keyword)) {
@@ -37,8 +35,11 @@ public class DeveloperController {
                 }
                 docs.remove(docs.get(0));
             }
+            model.addAttribute("docs", docArrayList);
+        }else {
+            model.addAttribute("docs", docs);
         }
-        model.addAttribute("docs", docArrayList);
+
         Doc doc = docService.getById(idDoc);
         model.addAttribute("doc", doc);
         return "developer/index";
