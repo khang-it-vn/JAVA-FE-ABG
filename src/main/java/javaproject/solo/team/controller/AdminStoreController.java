@@ -28,6 +28,7 @@ public class AdminStoreController {
     @GetMapping("adminstore/index")
     public  String index(Model model)
     {
+        model.addAttribute("products",productService.getAll());
         return "admin_store/index";
     }
 
